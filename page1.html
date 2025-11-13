@@ -3,9 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>page1</title>
+    <title>Pagina 1</title>
 </head>
 <body>
-    <h2>Bienvenido, pulsa Control + </h2>
+    <h2>Bienvenido, pulsa Control + F9 o espera 5 segundos</h2>
+
+    <script>
+        function showLogIn() {
+            document.body.innerHTML= "";
+
+            const label = document.createElement("label");
+            label.textContent = "Usuario: "
+
+            const input = document.createElement("input");
+            input.type= "text";
+            input.placeholder="Introduce tu nombre de usuario!";
+
+            const error = document.createElement("p");
+
+            document.body.appendChild(label);
+            document.body.appendChild(input);
+            document.body.appendChild(error);
+
+            input.addEventListener("blur",() => { //Cuando se pierde el foco en el input lanzamos el evento para validar
+                const valor =input.value.trim();
+
+                const patronCorreo = /^[^@]+@[^@]+\.[^@]+$/; //He buscado el patron del correopara poder validar el valor
+                if(!patronCorreo.test(valor)){
+                    error.textContent = "Formato inválido. Ejemplo correcto: nombre@dominio.com";
+                }else{
+                    error.textContent="";
+
+                    //Coger todos los usuarios primero
+                    let allUsers = JSON.parse(localStorage.getItem("allUsers"));
+                    //Crear el usuario nuevo
+                    const newUser ={
+                        username:valor,
+                        lastEntry: new Date().toLocaleString(),
+                        preferences: { theme: "dark", language: "en" },
+                        questions: []
+                    }
+                    //Guardarlo
+                    allUsers[valor] = newUser;
+                    localStorage.setItem("allUsers", JSON.stringify(allUsers)) || {};
+                    //Redirigimos si no hay ningún error al validar
+                    window.location.href="page2.html";
+                }
+            });
+        }
+        const temp = setTimeout(showLogIn, 5000);
+
+        document.addEventListener("keydown", (e) =>{
+            if(e.ctrlKey && e.key === "F9"){
+                clearTimeout(temp);
+                showLogIn();
+            }
+        });
+    </script>
 </body>
 </html>

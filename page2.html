@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina 2</title>
+</head>
+<body>
+    <h2 id="saludo"></h2>
+    <p id="ultimaEntrada"></p>
+    <button type="button" id="preguntas">Preguntas</button>
+
+    <script>
+        const preguntas = document.getElementById("preguntas");
+        const saludo = document.getElementById("saludo");
+        const entarda =document.getElementById("ultimaEntrada");
+
+
+        
+        preguntas.addEventListener("click", () => {
+            window.location.href="page3.html";
+        });
+    </script>
+    
+</body>
+</html>
