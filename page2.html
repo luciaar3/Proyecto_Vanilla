@@ -11,10 +11,18 @@
     <button type="button" id="preguntas">Preguntas</button>
 
     <script>
-        const preguntas = document.getElementById("preguntas");
+        
         const saludo = document.getElementById("saludo");
-        const entarda =document.getElementById("ultimaEntrada");
+        const entrada =document.getElementById("ultimaEntrada");
+        const preguntas = document.getElementById("preguntas");
 
+        const allUsers = JSON.parse(localStorage.getItem("allUsers"));
+        const user= localStorage.getItem("newUser");
+
+            if(user && allUsers[user]){
+                const usuario = allUsers[user];
+                saludo.textContent = `Hola ${allUsers[user].valor}`;
+            }
 
         
         preguntas.addEventListener("click", () => {

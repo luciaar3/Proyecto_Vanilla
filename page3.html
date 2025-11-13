@@ -6,12 +6,36 @@
     <title>Pagina 3</title>
 </head>
 <body>
-    <label>Pregunta: </label><br>
-    <input type="text" id="pregunta" name="pregunta">
+    <form id="crearPreguntas">
+        <label>Pregunta: </label>
+        <input type="text" id="pregunta" name="pregunta"><br>
+
+        <label>Verdadero</label>
+        <input type="radio" id="verdadero" name="verdadero">
+        <label>Falso</label>
+        <input type="radio" id="falso" name="falso"><br>
+
+        <label>Puntuación</label>
+        <input type="text" id="puntuacion" name="puntuacion"><br>
+
+        <button type="reset" enabled>Atrás</button>
+        <button type="submit" enabled>Grabar</button>
+    </form>
+
+    <div id="mostrarPreguntas">
+        <table>
+            <tr>Pregunta</tr><tr>Respuesta</tr><tr>Puntuación</tr><tr>Estado</tr>
+            <td></td>
+        </table>
+        
+    </div>
+
+
+
 
     
     <script>
-        function delay() {
+        function showQuestions() {
             
         }
     </script>

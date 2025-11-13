@@ -26,7 +26,7 @@
             document.body.appendChild(error);
 
             input.addEventListener("blur",() => { //Cuando se pierde el foco en el input lanzamos el evento para validar
-                const valor =input.value.trim();
+                const valor = input.value.trim();
 
                 const patronCorreo = /^[^@]+@[^@]+\.[^@]+$/; //He buscado el patron del correopara poder validar el valor
                 if(!patronCorreo.test(valor)){
@@ -34,18 +34,22 @@
                 }else{
                     error.textContent="";
 
-                    //Coger todos los usuarios primero
-                    let allUsers = JSON.parse(localStorage.getItem("allUsers"));
-                    //Crear el usuario nuevo
+                    //Crear el usuario nuev
                     const newUser ={
                         username:valor,
                         lastEntry: new Date().toLocaleString(),
                         preferences: { theme: "dark", language: "en" },
                         questions: []
                     }
-                    //Guardarlo
-                    allUsers[valor] = newUser;
-                    localStorage.setItem("allUsers", JSON.stringify(allUsers)) || {};
+                    let user = JSON.parse(localStorage.getItem("newUser"));
+
+                    if(!user){//si existe el usuario quiero guardarlo
+                        localStorage.setItem("newUser",JSON.stringify(newUser))
+                    }else{//si ya existe nada
+
+                    }
+                    
+                    
                     //Redirigimos si no hay ningún error al validar
                     window.location.href="page2.html";
                 }
