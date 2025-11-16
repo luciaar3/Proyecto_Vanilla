@@ -17,35 +17,28 @@
         <input type="radio" id="falso" name="respuesta" value="falso"><br>
 
         <label>Puntuación</label>
-        <input type="number" id="puntuacion" name="puntuacion"><br>
+        <input type="number" id="puntuacion" name="puntuacion" min="0" max="9"><br>
 
         <button id="atras">Atrás</button>
         <button id="grabar" disabled>Grabar</button>
     </form>
 
     <div id="mostrarPreguntas">
-        <hr3>Listado de Preguntas</hr3>
+        <h3>Listado de Preguntas</h3>
         <p id="cargarPreg">Cargando preguntas....</p>
-    <table id="tablaPreguntas">
-        <thead>
-            <tr>
-                <th>Pregunta</th>
-                <th>Respuesta</th>
-                <th>Puntuación</th>
-                <th>Estado</th>
-            </tr>
-        </thead>
-        <tbody id="tablaCuerpo"></tbody>
-    </table>
-</div>
+        <table id="tablaPreguntas">
+            <thead>
+                <tr>
+                    <th>Pregunta</th>
+                    <th>Respuesta</th>
+                    <th>Puntuación</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody id="tablaCuerpo"></tbody>
+        </table>
+    </div>
 
-    <script>
-        const pregunta = document.getElementById("crearPreguntas");
-        const respuesta = document.getElementsByName("respuesta");
-        const atras = document.getElementById("atras");
-        const grabar = document.getElementById("grabar");
-        
-         
-    </script>
+    <script src="/js/page3.js"></script>
 </body>
 </html>
