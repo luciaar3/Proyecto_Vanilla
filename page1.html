@@ -31,28 +31,33 @@
                 const patronCorreo = /^[^@]+@[^@]+\.[^@]+$/; //He buscado el patron del correopara poder validar el valor
                 if(!patronCorreo.test(valor)){
                     error.textContent = "Formato inválido. Ejemplo correcto: nombre@dominio.com";
-                }else{
+                    return;
+                }
                     error.textContent="";
 
-                    //Crear el usuario nuev
-                    const newUser ={
-                        username:valor,
-                        lastEntry: new Date().toLocaleString(),
-                        preferences: { theme: "dark", language: "en" },
-                        questions: []
-                    }
-                    let user = JSON.parse(localStorage.getItem("newUser"));
+                    const allUsers= JSON.parse(localStorage.getItem("allUsers")) || {};
 
-                    if(!user){//si existe el usuario quiero guardarlo
-                        localStorage.setItem("newUser",JSON.stringify(newUser))
-                    }else{//si ya existe nada
-
+                    if(!allUsers[valor]){//si No existe el usuario quiero crearlo y quiero guardarlo
+                        //Creo el usuario nuev
+                        const newUser ={
+                            username:valor,
+                            lastEntry: new Date().toLocaleString(),
+                            preferences: { theme: "dark", language: "en" },
+                            questions: []
+                        };
+                        allUsers[valor] = newUser;
+                    }else{//si ya existe simplmnte actualizamos la ultima entrada
+                        allUsers[valor].lastEntry = new Date().toLocaleString();
                     }
+
+                    //guardamos y marcamos el que esta en sesión ahora
+                    localStorage.setItem("allUsers", JSON.stringify(allUsers));
+                    localStorage.setItem("nowUser",valor);
                     
                     
                     //Redirigimos si no hay ningún error al validar
                     window.location.href="page2.html";
-                }
+                
             });
         }
         const temp = setTimeout(showLogIn, 5000);

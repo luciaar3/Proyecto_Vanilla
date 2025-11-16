@@ -10,34 +10,42 @@
         <label>Pregunta: </label>
         <input type="text" id="pregunta" name="pregunta"><br>
 
+
         <label>Verdadero</label>
-        <input type="radio" id="verdadero" name="verdadero">
+        <input type="radio" id="verdadero" name="respuesta" value="verdadero">
         <label>Falso</label>
-        <input type="radio" id="falso" name="falso"><br>
+        <input type="radio" id="falso" name="respuesta" value="falso"><br>
 
         <label>Puntuación</label>
-        <input type="text" id="puntuacion" name="puntuacion"><br>
+        <input type="number" id="puntuacion" name="puntuacion"><br>
 
-        <button type="reset" enabled>Atrás</button>
-        <button type="submit" enabled>Grabar</button>
+        <button id="atras">Atrás</button>
+        <button id="grabar" disabled>Grabar</button>
     </form>
 
     <div id="mostrarPreguntas">
-        <table>
-            <tr>Pregunta</tr><tr>Respuesta</tr><tr>Puntuación</tr><tr>Estado</tr>
-            <td></td>
-        </table>
-        
-    </div>
+        <hr3>Listado de Preguntas</hr3>
+        <p id="cargarPreg">Cargando preguntas....</p>
+    <table id="tablaPreguntas">
+        <thead>
+            <tr>
+                <th>Pregunta</th>
+                <th>Respuesta</th>
+                <th>Puntuación</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody id="tablaCuerpo"></tbody>
+    </table>
+</div>
 
-
-
-
-    
     <script>
-        function showQuestions() {
-            
-        }
+        const pregunta = document.getElementById("crearPreguntas");
+        const respuesta = document.getElementsByName("respuesta");
+        const atras = document.getElementById("atras");
+        const grabar = document.getElementById("grabar");
+        
+         
     </script>
 </body>
 </html>
